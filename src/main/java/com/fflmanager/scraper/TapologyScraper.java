@@ -2,6 +2,7 @@ package com.fflmanager.scraper;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 /**
  * Author: Sajal Gupta
@@ -16,6 +17,16 @@ public class TapologyScraper implements Scraper{
      */
     public String getFightCardRawText(Document doc) {
         Element fightCard = doc.getElementById("sectionFightCard");
-        return fightCard.text();
+        Elements images = fightCard.select("img");
+        StringBuilder sb = new StringBuilder();
+        sb.append(fightCard.text()).append("\n");
+        for(Element img : images) {
+        	//only fetch headshot images
+        	if(img.attr("src").contains("headshot_images")){
+        		sb.append("\n").append(img.attr("src"));
+        	}
+        }
+        
+        return sb.toString();
     }
 }
