@@ -91,11 +91,11 @@ public class ClaudeParser implements FightCardParser {
 	 * @return
 	 * @throws Exception
 	 */
-	private FightCard parseResponse(String json) throws Exception {
-        System.out.println(json);
-		ObjectMapper mapper = new ObjectMapper();
-		return mapper.readValue(json, FightCard.class);
-	}
+    private FightCard parseResponse(String json) throws Exception {
+        String cleaned = json.replaceAll("```json", "").replaceAll("```", "").trim();
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(cleaned, FightCard.class);
+    }
 
 	/**
 	 * 

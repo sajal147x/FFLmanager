@@ -2,6 +2,7 @@ package com.fflmanager.scraper;
 
 import com.fflmanager.LLM.FightCardParser;
 import com.fflmanager.LLM.FightCardParserFactory;
+import com.fflmanager.dto.FightCard;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -73,7 +74,9 @@ public class ScraperService {
 
        //STEP 2 : parse the fight card raw text and convert to java object using LLM providers
        FightCardParser parser = FightCardParserFactory.getParser("claude"); //get parser at run time based on provider
-       parser.parse(fightCard);
+       FightCard card = parser.parse(fightCard);
+
+       System.out.println(card);
 
     }
 
