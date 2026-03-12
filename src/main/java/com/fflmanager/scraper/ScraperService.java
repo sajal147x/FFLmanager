@@ -24,7 +24,8 @@ public class ScraperService {
      * @param websiteType
      * @throws IOException
      */
-    public String scrape(String url, String websiteType) throws IOException {
+    public String scrape(String url, String websiteType)  {
+    	try {
         Document doc = Jsoup.connect(url)
                 .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
                 .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
@@ -33,8 +34,15 @@ public class ScraperService {
                 .timeout(10000)
                 .followRedirects(true)
                 .get();
-
+        
         return fightCardRaw(doc, websiteType);
+
+    	}
+    	catch (IOException e) {
+    		System.out.println("Error connecting to URL: " + e.getMessage());
+			return "";
+    	}
+        
 
     }
 
@@ -58,7 +66,7 @@ public class ScraperService {
      * @param args
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         //STEP 1 : get fight card raw text by scraping
        String fightCard = new ScraperService().scrape("https://www.tapology.com/fightcenter/events/136874-ufc-fight-night", "TAPOLOGY");
@@ -67,7 +75,6 @@ public class ScraperService {
        FightCardParser parser = FightCardParserFactory.getParser("claude"); //get parser at run time based on provider
        parser.parse(fightCard);
 
-       System.out.println(fightCard);
     }
 
 

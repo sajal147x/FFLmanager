@@ -1,0 +1,9 @@
+{
+  "fights": [
+    {
+      "fighter1": { "name": "Fighter Name" },
+      "fighter2": { "name": "Fighter Name" },
+      "weightClass": "Heavyweight"
+    }
+  ]
+}

@@ -8,5 +8,5 @@ import com.fflmanager.dto.FightCard;
  */
 public interface FightCardParser {
 
-    FightCard parse(String fightCardRawText);
+    FightCard parse(String fightCardRawText) ;
 }
