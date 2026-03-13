@@ -17,16 +17,21 @@ public class TapologyScraper implements Scraper{
      */
     public String getFightCardRawText(Document doc) {
         Element fightCard = doc.getElementById("sectionFightCard");
-        Elements images = fightCard.select("img");
         StringBuilder sb = new StringBuilder();
         sb.append(fightCard.text()).append("\n");
+        return sb.toString();
+    }
+
+    public String getFighterImages(Document doc){
+        Element fightCard = doc.getElementById("sectionFightCard");
+        Elements images = fightCard.select("img");
+        StringBuilder sb = new StringBuilder();
         for(Element img : images) {
-        	//only fetch headshot images
-        	if(img.attr("src").contains("headshot_images")){
-        		sb.append("\n").append(img.attr("src"));
-        	}
+            //only fetch headshot images
+            if(img.attr("src").contains("headshot_images")){
+                sb.append("\n").append(img.attr("src"));
+            }
         }
-        
         return sb.toString();
     }
 }

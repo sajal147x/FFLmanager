@@ -1,9 +1,23 @@
 {
+  "name": "UFC FIGHT NIGHT",
   "fights": [
     {
-      "fighter1": { "name": "Fighter Name" },
-      "fighter2": { "name": "Fighter Name" },
-      "weightClass": "Heavyweight"
+      "fighter1": {
+        "name": "Fighter Name",
+        "bettingOdds": "Betting odds",
+        "weight": "Weight",
+        "record": "17-1",
+        "imageUrl": "image"
+      },
+      "fighter2": {
+        "name": "Fighter Name",
+        "bettingOdds": "Betting odds",
+        "weight": "Weight",
+        "record": "17-1",
+        "imageUrl": "image"
+      },
+      "weightClass": "Heavyweight",
+      "numRounds": "3 x 5"
     }
   ]
 }

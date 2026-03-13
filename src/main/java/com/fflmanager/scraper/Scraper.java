@@ -1,6 +1,7 @@
 package com.fflmanager.scraper;
 
 import org.jsoup.nodes.Document;
+import java.util.List;
 
 /**
  * Author: Sajal Gupta
@@ -9,4 +10,6 @@ import org.jsoup.nodes.Document;
 public interface Scraper {
 
     public String getFightCardRawText(Document doc);
+
+    public String getFighterImages(Document doc);
 }

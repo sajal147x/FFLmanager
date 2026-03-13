@@ -77,7 +77,7 @@ public class ClaudeParser implements FightCardParser {
         Message message = client.messages().create(
                 MessageCreateParams.builder()
                         .model(Model.CLAUDE_SONNET_4_6)
-                        .maxTokens(1024)
+                        .maxTokens(4096)
                         .addUserMessage(prompt)
                         .build()
         );
