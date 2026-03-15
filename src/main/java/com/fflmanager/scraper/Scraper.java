@@ -12,4 +12,6 @@ public interface Scraper {
     public String getFightCardRawText(Document doc);
 
     public String getFighterImages(Document doc);
+
+    String getFightEventDetails(Document doc);
 }

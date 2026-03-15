@@ -1,6 +1,9 @@
 {
   "name": "UFC FIGHT NIGHT",
   "date" : "2026-01-01",
+  "promotion": "UFC",
+  "location" : "Vegas",
+  "venue" : "apex",
   "fights": [
     {
       "fighter1": {

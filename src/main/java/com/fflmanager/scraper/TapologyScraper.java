@@ -22,6 +22,11 @@ public class TapologyScraper implements Scraper{
         return sb.toString();
     }
 
+    /**
+     *
+     * @param doc
+     * @return
+     */
     public String getFighterImages(Document doc){
         Element fightCard = doc.getElementById("sectionFightCard");
         Elements images = fightCard.select("img");
@@ -34,4 +39,14 @@ public class TapologyScraper implements Scraper{
         }
         return sb.toString();
     }
+
+    @Override
+    public String getFightEventDetails(Document doc) {
+        Element eventDetails = doc.getElementById("primaryDetailsContainer");
+        StringBuilder sb = new StringBuilder();
+        sb.append(eventDetails.text()).append("\n");
+        return sb.toString();
+    }
+
+
 }

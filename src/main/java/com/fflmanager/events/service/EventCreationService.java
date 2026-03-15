@@ -32,9 +32,13 @@ public class EventCreationService {
     public void createEventFromParsedFightCard(FightCard fightCard) {
 
         //CREATE AND SAVE EVENT
-        Event event = new Event();
-        event.setName(fightCard.getName());
-        event.setDate(parseDate(fightCard.getDate()));
+        Event event = Event.builder()
+                .type(fightCard.getPromotion())
+                .name(fightCard.getName())
+                .date(parseDate(fightCard.getDate()))
+                .location(fightCard.getLocation())
+                .venue(fightCard.getVenue())
+                .build();
 
         //CREATE FIGHTS
 

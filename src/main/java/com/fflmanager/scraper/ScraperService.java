@@ -77,10 +77,12 @@ public class ScraperService {
 
         // STEP 2
         Scraper scraper = ScraperFactory.getScraper("TAPOLOGY");
+        String fightEventDetails = scraper.getFightEventDetails(doc);
         String fightCardRawText = scraper.getFightCardRawText(doc);
         String fighterImages = scraper.getFighterImages(doc);
 
         StringBuilder sb = new StringBuilder();
+        sb.append(fightEventDetails).append("\n");
         sb.append(fightCardRawText).append("\n").append(fighterImages);
 
         // STEP 3

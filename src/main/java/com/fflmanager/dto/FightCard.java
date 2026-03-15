@@ -19,5 +19,8 @@ import lombok.Setter;
 public class FightCard {
 	private List<Fight> fights;
 	private String date;
+    private String promotion;
+    private String venue;
+    private String location;
 	private String name;
 }
