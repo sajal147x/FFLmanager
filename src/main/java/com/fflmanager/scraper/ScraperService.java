@@ -95,6 +95,8 @@ public class ScraperService {
        //STEP 4: create entries in the database for the parsed fight card
        new EventCreationService().createEventFromParsedFightCard(fightCard);
 
+
+
     }
 
 

@@ -5,44 +5,51 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.time.OffsetDateTime;
 
 import java.util.UUID;
 
 /**
  * Author: Sajal Gupta
- * Date: 3/15/26 3:38 PM
+ * Date: 3/15/26 4:01 PM
  */
 @Entity
-@Table(name="events")
+@Table(name="fighters")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Event {
+public class Fighter {
 
     @GeneratedValue
     @Id
-    @Column
     private UUID id;
 
     @Column
     private String name;
 
     @Column
-    private String type;
+    private String nickname;
 
     @Column
-    private String status;
+    private String nationality;
 
     @Column
-    private OffsetDateTime date;
+    private String imageUrl;
 
     @Column
-    private String venue;
+    private int age;
 
     @Column
-    private String location;
+    private Double height;
+
+    @Column
+    private int weight;
+
+    @Column
+    private int reach;
+
+    @Column
+    private String record;
 
 
 }
