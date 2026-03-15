@@ -86,7 +86,7 @@ public class ScraperService {
         sb.append(fightCardRawText).append("\n").append(fighterImages);
 
         // STEP 3
-        FightCardParser parser = FightCardParserFactory.getParser("claude");
+        FightCardParser parser = FightCardParserFactory.getParser("openai");
         FightCard fightCard = parser.parse(sb.toString());
 
         // STEP 4

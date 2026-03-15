@@ -16,6 +16,8 @@ public class FightCardParserFactory {
         switch (provider.toLowerCase()) {
             case "claude":
                 return new ClaudeParser();
+            case "openai":
+                return new OpenAIParser();
             default:
                 throw new IllegalArgumentException("Unsupported provider: " + provider);
         }
