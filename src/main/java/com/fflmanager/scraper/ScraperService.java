@@ -5,6 +5,7 @@ import com.fflmanager.LLM.FightCardParserFactory;
 import com.fflmanager.dto.Fight;
 import com.fflmanager.dto.FightCard;
 import com.fflmanager.dto.Fighter;
+import com.fflmanager.events.service.EventCreationService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -91,11 +92,9 @@ public class ScraperService {
        FightCardParser parser = FightCardParserFactory.getParser("claude"); //get parser at run time based on provider
        FightCard fightCard = parser.parse(sb.toString());
 
-       for (Fight fight : fightCard.getFights()){
-           Fighter fighter1 = fight.getFighter1();
-           Fighter fighter2 = fight.getFighter2();
-           System.out.println(fighter1.getName() + " (" + fighter1.getRecord() + ") " + fighter1.getImageUrl() + " VS " + fighter2.getName() + " (" + fighter2.getRecord() + ")" +  fighter2.getImageUrl());
-       }
+       //STEP 4: create entries in the database for the parsed fight card
+       new EventCreationService().createEventFromParsedFightCard(fightCard);
+
     }
 
 
