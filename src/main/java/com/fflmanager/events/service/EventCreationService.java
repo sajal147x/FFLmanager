@@ -6,6 +6,10 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import com.fflmanager.events.entity.Event;
 
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+
 
 /**
  * Author: Sajal Gupta
@@ -30,11 +34,16 @@ public class EventCreationService {
         //CREATE AND SAVE EVENT
         Event event = new Event();
         event.setName(fightCard.getName());
-        event.setDate(fightCard.getStartTime());
+        event.setDate(parseDate(fightCard.getDate()));
 
         //CREATE FIGHTS
 
         eventRepository.save(event);
 
+    }
+
+    private OffsetDateTime parseDate(String date) {
+        LocalDate localDate = LocalDate.parse(date); // parses "2026-01-01"
+        return localDate.atStartOfDay(ZoneOffset.UTC).toOffsetDateTime();
     }
 }

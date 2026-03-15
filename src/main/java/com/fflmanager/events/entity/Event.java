@@ -1,5 +1,6 @@
 package com.fflmanager.events.entity;
 
+import com.fflmanager.enums.EventStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,10 +31,7 @@ public class Event {
     private String name;
 
     @Column
-    private String type;
-
-    @Column
-    private String status;
+    private String type = "UFC";
 
     @Column
     private OffsetDateTime date;

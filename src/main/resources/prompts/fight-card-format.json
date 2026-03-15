@@ -1,5 +1,6 @@
 {
   "name": "UFC FIGHT NIGHT",
+  "date" : "2026-01-01",
   "fights": [
     {
       "fighter1": {

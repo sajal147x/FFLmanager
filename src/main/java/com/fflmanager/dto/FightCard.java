@@ -18,6 +18,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FightCard {
 	private List<Fight> fights;
-	private OffsetDateTime startTime;
+	private String date;
 	private String name;
 }

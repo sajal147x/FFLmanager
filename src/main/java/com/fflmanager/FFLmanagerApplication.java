@@ -1,4 +1,4 @@
-package com.fflmanager.fflmanager;
+package com.fflmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

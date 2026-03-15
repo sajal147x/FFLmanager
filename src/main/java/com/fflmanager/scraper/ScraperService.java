@@ -2,14 +2,13 @@ package com.fflmanager.scraper;
 
 import com.fflmanager.LLM.FightCardParser;
 import com.fflmanager.LLM.FightCardParserFactory;
-import com.fflmanager.dto.Fight;
 import com.fflmanager.dto.FightCard;
-import com.fflmanager.dto.Fighter;
 import com.fflmanager.events.service.EventCreationService;
+import com.fflmanager.FFLmanagerApplication;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 
@@ -21,6 +20,12 @@ import java.io.IOException;
  */
 @Service
 public class ScraperService {
+
+    private final EventCreationService eventCreationService;
+
+    public ScraperService(EventCreationService eventCreationService) {
+        this.eventCreationService = eventCreationService;
+    }
 
     public Document getDocFromWebsite(String url){
         Document doc = null;
@@ -44,7 +49,6 @@ public class ScraperService {
 
     /**
      * method that scrapes the site and returns the fight card in raw text
-     * @param url
      * @param websiteType
      * @throws IOException
      */
@@ -67,36 +71,31 @@ public class ScraperService {
         return relevantContent;
     }
 
-    /**
-     *
-     * @param args
-     * @throws IOException
-     */
-    public static void main(String[] args) {
+    public void run() {
+        // STEP 1
+        Document doc = getDocFromWebsite("https://www.tapology.com/fightcenter/events/136874-ufc-fight-night");
 
-
-        //STEP 1 : get Document from the web
-       Document doc = new ScraperService().getDocFromWebsite("https://www.tapology.com/fightcenter/events/136874-ufc-fight-night");
-
-        //STEP 2 : get fight card raw text and images
-        Scraper scraper = ScraperFactory.getScraper("TAPOLOGY"); //get scraper at run time based on provider
+        // STEP 2
+        Scraper scraper = ScraperFactory.getScraper("TAPOLOGY");
         String fightCardRawText = scraper.getFightCardRawText(doc);
         String fighterImages = scraper.getFighterImages(doc);
 
         StringBuilder sb = new StringBuilder();
-        sb.append(fightCardRawText);
-        sb.append("\n");
-        sb.append(fighterImages);
+        sb.append(fightCardRawText).append("\n").append(fighterImages);
 
-       //STEP 3: parse the fight card raw text and convert to java object using LLM providers
-       FightCardParser parser = FightCardParserFactory.getParser("claude"); //get parser at run time based on provider
-       FightCard fightCard = parser.parse(sb.toString());
+        // STEP 3
+        FightCardParser parser = FightCardParserFactory.getParser("claude");
+        FightCard fightCard = parser.parse(sb.toString());
 
-       //STEP 4: create entries in the database for the parsed fight card
-       new EventCreationService().createEventFromParsedFightCard(fightCard);
-
+        // STEP 4
+        eventCreationService.createEventFromParsedFightCard(fightCard);
+    }
 
 
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(FFLmanagerApplication.class, args);
+        ScraperService scraperService = context.getBean(ScraperService.class);
+        scraperService.run(); // move your logic to an instance method
     }
 
 
