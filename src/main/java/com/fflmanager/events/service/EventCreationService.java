@@ -140,10 +140,16 @@ public class EventCreationService {
         if(fighter!=null){
             return fighter;
         }
+        String imageUrl = null;
+        if(fighterDto.getImageUrl()!=null){
+            CdnStorage storage = CdnStorageFactory.getStorageService("supabase");
+            imageUrl = storage.uploadImageToCdnStorageFromUrl(fighterDto.getImageUrl(), fighterDto.getName());
+        }
         fighter = Fighter.builder()
                 .name(fighterDto.getName())
                 .weight((int) Math.round(Double.parseDouble(fighterDto.getWeight())))
                 .record(fighterDto.getRecord())
+                .imageUrl(imageUrl)
                 .build();
         fighterRepository.save(fighter);
         return fighter;

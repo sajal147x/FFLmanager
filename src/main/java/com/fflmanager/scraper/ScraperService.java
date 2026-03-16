@@ -94,11 +94,7 @@ public class ScraperService {
     }
 
 
-    public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(FFLmanagerApplication.class, args);
-        ScraperService scraperService = context.getBean(ScraperService.class);
-        scraperService.run(); // move your logic to an instance method
-    }
+
 
 
 }
