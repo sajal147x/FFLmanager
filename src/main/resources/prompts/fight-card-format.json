@@ -11,14 +11,20 @@
         "bettingOdds": "-150",
         "weight": "145",
         "record": "17-1",
-        "imageUrl": "image"
+        "imageUrl": "image",
+        "height": "5.7ft",
+        "age": "30years",
+        "reach": "150cm"
       },
       "fighter2": {
         "name": "Fighter Name",
         "bettingOdds": "+150",
         "weight": "145",
         "record": "17-1",
-        "imageUrl": "image"
+        "imageUrl": "image",
+        "height": "5.7ft",
+        "age": "30years",
+        "reach": "150cm"
       },
       "weightClass": "Heavyweight",
       "numRounds": "3 x 5",

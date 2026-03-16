@@ -5,6 +5,7 @@ import com.fflmanager.LLM.FightCardParserFactory;
 import com.fflmanager.dto.FightCard;
 import com.fflmanager.events.service.EventCreationService;
 import com.fflmanager.FFLmanagerApplication;
+import com.fflmanager.events.service.SupabaseStorage;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.boot.SpringApplication;
@@ -35,7 +36,7 @@ public class ScraperService {
                     .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
                     .header("Accept-Language", "en-US,en;q=0.5")
                     .referrer("https://www.google.com")
-                    .timeout(10000)
+                    .timeout(30000)
                     .followRedirects(true)
                     .get();
         }
@@ -73,7 +74,7 @@ public class ScraperService {
 
     public void run() {
         // STEP 1
-        Document doc = getDocFromWebsite("https://www.tapology.com/fightcenter/events/136874-ufc-fight-night");
+        Document doc = getDocFromWebsite("https://www.tapology.com/fightcenter/events/136856-ufc-fight-night");
 
         // STEP 2
         Scraper scraper = ScraperFactory.getScraper("TAPOLOGY");
@@ -94,7 +95,11 @@ public class ScraperService {
     }
 
 
-
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(FFLmanagerApplication.class, args);
+        ScraperService service = context.getBean(ScraperService.class);
+        service.run();
+    }
 
 
 }

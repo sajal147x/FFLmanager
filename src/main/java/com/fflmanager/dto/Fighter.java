@@ -19,6 +19,7 @@ public class Fighter {
     private String bettingOdds;
     private String weight;
     private String height;
+    private String age;
     private String record;
     private String reach;
     private String imageUrl;
