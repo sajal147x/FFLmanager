@@ -12,9 +12,9 @@
         "weight": "145",
         "record": "17-1",
         "imageUrl": "image",
-        "height": "5.7ft",
-        "age": "30years",
-        "reach": "150cm"
+        "height": "5.7 ft",
+        "age": "30 years",
+        "reach": "150 cm"
       },
       "fighter2": {
         "name": "Fighter Name",
@@ -22,9 +22,9 @@
         "weight": "145",
         "record": "17-1",
         "imageUrl": "image",
-        "height": "5.7ft",
-        "age": "30years",
-        "reach": "150cm"
+        "height": "5.7 ft",
+        "age": "30 years",
+        "reach": "150 cm"
       },
       "weightClass": "Heavyweight",
       "numRounds": "3 x 5",
