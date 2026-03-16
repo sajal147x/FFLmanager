@@ -1,10 +1,8 @@
 package com.fflmanager.events.entity;
 
+import com.fflmanager.enums.FightCategory;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -16,6 +14,7 @@ import java.util.UUID;
 @Table(name="fights")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Fight {
@@ -34,8 +33,9 @@ public class Fight {
     @Column
     private String weightClass;
 
-    @Column
-    private String category;
+    @Column(name = "category")
+    private String category = "main_card";
+
 
     @Column
     private String status;
@@ -44,8 +44,6 @@ public class Fight {
     @JoinColumn(name = "winner_id")
     private Fighter winner;
 
-    @Column
-    private String win_method;
 
     @Column
     private int round;

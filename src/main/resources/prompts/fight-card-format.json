@@ -8,20 +8,21 @@
     {
       "fighter1": {
         "name": "Fighter Name",
-        "bettingOdds": "Betting odds",
-        "weight": "Weight",
+        "bettingOdds": "-150",
+        "weight": "145",
         "record": "17-1",
         "imageUrl": "image"
       },
       "fighter2": {
         "name": "Fighter Name",
-        "bettingOdds": "Betting odds",
-        "weight": "Weight",
+        "bettingOdds": "+150",
+        "weight": "145",
         "record": "17-1",
         "imageUrl": "image"
       },
       "weightClass": "Heavyweight",
-      "numRounds": "3 x 5"
+      "numRounds": "3 x 5",
+      "category": "prelim"
     }
   ]
 }

@@ -19,5 +19,6 @@ public class Fight {
     private Fighter fighter2;
     private String weightClass;
     private String numRounds;
+    private String category;
 
 }

@@ -7,6 +7,7 @@ import lombok.*;
 import java.time.OffsetDateTime;
 
 import java.util.UUID;
+import java.util.List;
 
 /**
  * Author: Sajal Gupta
@@ -40,6 +41,10 @@ public class Event {
 
     @Column
     private String location;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="event_id")
+    private List<Fight> fights;
 
 
 }
